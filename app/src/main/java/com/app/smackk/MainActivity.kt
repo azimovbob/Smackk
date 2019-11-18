@@ -1,5 +1,6 @@
 package com.app.smackk
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -32,7 +33,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun loginBtnNavClicked(view: View){}
+    fun loginBtnNavClicked(view: View){
+
+        val loginIntent = Intent(this,  LoginActivity::class.java)
+        startActivity(loginIntent)
+
+    }
     fun addChanneClickedl(view: View) {}
     fun sendMessageBtnClicked(view: View) {}
 }
