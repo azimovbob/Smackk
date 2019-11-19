@@ -1,0 +1,69 @@
+package com.app.smackk.Controller
+
+import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import com.app.smackk.R
+import com.app.smackk.Services.AuthService
+import kotlinx.android.synthetic.main.activity_creat_user.*
+import kotlin.random.Random
+
+class CreateUserActivity : AppCompatActivity() {
+
+    private var userAvatar = "profileDefault"
+    var avatarColor = "[0.5, 0.5, 0.5, 1]"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_creat_user)
+    }
+
+    fun generateUserAvatar(view: View) {
+
+        val random = Random
+        val color = random.nextInt(2)
+        val avatar = random.nextInt(28)
+
+
+
+        userAvatar = if(color==0){
+            "light$avatar"
+        } else{
+            "dark$avatar"
+        }
+
+        val resourceId = resources.getIdentifier(userAvatar, "drawable", packageName)
+        createAvatarImage.setImageResource(resourceId)
+
+    }
+
+
+
+    fun generateColorClicked(view: View) {
+
+        val random = Random
+        val r = random.nextInt(255)
+        val g = random.nextInt(255)
+        val b = random.nextInt(255)
+
+        createAvatarImage.setBackgroundColor(Color.rgb(r,g,b))
+
+
+        val savedR = r.toDouble() / 255
+        val savedG = r.toDouble() / 255
+        val savedB = r.toDouble() / 255
+
+        avatarColor = "[$savedR, $savedG, $savedB, 1]"
+
+        println(avatarColor)
+
+    }
+    fun createUserBtnClicked(view: View) {
+        AuthService.registerUser(this, "bobaz@gmail.com","12345567"){complete->
+            if(complete){}
+
+
+        }
+    }
+}
