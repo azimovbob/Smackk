@@ -104,6 +104,7 @@ class CreateUserActivity : AppCompatActivity() {
         }
         else {
             Toast.makeText(this, "Make sure all field are not empty", Toast.LENGTH_LONG).show()
+            enableSpinner(false)
         }
 
     }

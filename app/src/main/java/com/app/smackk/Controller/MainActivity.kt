@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         if(AuthService.isLoggedIn){
 
             UserDataService.logout()
-            userNameNavHeader.text = "Please login"
+            userNameNavHeader.text = ""
             userEmailNavHeader.text = ""
             userImageNavHeader.setImageResource(R.drawable.profiledefault)
             userImageNavHeader.setBackgroundColor(Color.TRANSPARENT)
